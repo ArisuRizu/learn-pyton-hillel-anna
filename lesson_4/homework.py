@@ -6,14 +6,14 @@ print('Для запуску БОТа привітайтесь будь-ласк
 #user_answer - відповідь, що надає користувач
 
 while True:
-    user_answer = input().lower()
-    if 'хай' in user_answer or 'привіт' in user_answer or 'доброго дня' in user_answer:
+    user_answer = input()
+    if 'хай' in user_answer.lower() or 'привіт' in user_answer.lower() or 'доброго дня' in user_answer.lower():
         print('Доброго вечора, я бот з України!')
-    elif 'як справи' in user_answer or 'що робиш' in user_answer or 'чим займаєшся' in user_answer:
+    elif 'як справи' in user_answer.lower() or 'що робиш' in user_answer.lower() or 'чим займаєшся' in user_answer.lower():
         print('Вчусь програмувати на Python! А ти чим займаєшся?')
-    elif 'фільм' in user_answer or 'кінотеатр' in user_answer or 'серіал' in user_answer:
+    elif 'фільм' in user_answer.lower() or 'кінотеатр' in user_answer.lower() or 'серіал' in user_answer.lower():
         print("Вибачаюсь, що втручаюсь, я не знаю про що йдеться мова, але раджу до перегляду фільм Джон Уік 4, він просто бомба!")
-    elif 'бувай' in user_answer or 'надобраніч' in user_answer or 'гудбай' in user_answer or 'до зустрічі' in user_answer:
+    elif 'бувай' in user_answer.lower() or 'надобраніч' in user_answer.lower() or 'гудбай' in user_answer.lower() or 'до зустрічі' in user_answer.lower():
         print('I\'ll be back, так, що до зустрічі в мережі', user_name, '!')
         break
     else:
