@@ -17,4 +17,4 @@ while True:
         print('I\'ll be back, так, що до зустрічі в мережі', user_name, '!')
         break
     else:
-        print("Що?Що? Не розумію :(")
+        print('Що?Що? Не розумію :(')
