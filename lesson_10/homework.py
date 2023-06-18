@@ -11,7 +11,7 @@ def add_note():
             notes.append(note)
             print('Нотатка успішно додана!')
 
-        # Запитуємо у користувача чи бажає він ще додати нотатку, а також інформуємо на випадок введення ним некорректної команди.
+        # Запитуємо у користувача чи бажає він ще додати нотатку, а також інформуємо на випадок введення ним некоректної команди.
         choice = input('Бажаєте додати ще нотатку? (так або ні): ').lower()
         while choice not in ['так', 'ні']:
             print('Невідома команда. Спробуйте ще раз.')
@@ -21,7 +21,7 @@ def add_note():
             break
 
 # Функція з сортування нотаток, сортуємо за заданними пораметрами, також перевіряємо чи є взагалі, що сортувати.
-def sort_notes(order):
+def sort_notes(order, num_notes):
     if not notes:
         print('Неможливо сортувати, оскільки Ви не додали жодної нотатки.')
         return
@@ -29,28 +29,32 @@ def sort_notes(order):
     if order == 'earliest':
         sorted_notes = sorted(notes)
         print('Від найранішої до найпізнішої:')
-        for note in sorted_notes:
+        print_notes = sorted_notes[:num_notes]
+        for note in print_notes:
             print(note)
     elif order == 'latest':
         sorted_notes = sorted(notes, reverse=True)
         print('Від найпізнішої до найранішої:')
-        for note in sorted_notes:
+        print_notes = sorted_notes[:num_notes]
+        for note in print_notes:
             print(note)
     elif order == 'longest':
         sorted_notes = sorted(notes, key=len, reverse=True)
         print('Від найдовшої до найкоротшої:')
-        for note in sorted_notes:
+        print_notes = sorted_notes[:num_notes]
+        for note in print_notes:
             print(note)
     elif order == 'shortest':
         sorted_notes = sorted(notes, key=len)
         print('Від найкоротшої до найдовшої:')
-        for note in sorted_notes:
+        print_notes = sorted_notes[:num_notes]
+        for note in print_notes:
             print(note)
 
 # Функція з вводу даних користувачем.
 def user_input():
     while True:
-        command = input('Введіть команду: ').lower()
+        command = input('\nДоступні команди: \n> add (створити нотатку)\n> sort (сортувати нотатки) \n> exit (вийти з програми) \nЩо бажаєте виконати?\n').lower()
 
         if command == 'add':
             add_note()
@@ -59,11 +63,11 @@ def user_input():
             if not notes:
                 print('Неможливо сортувати, оскільки Ви не додали жодної нотатки.')
             else:
-                print(
-                    '\nДоступні команди сортування: \n \nearliest (від найранішої до найпізнішої) \nlatest (від найпізнішої до найранішої) \nlongest (від найдовшої до найкоротшої) \nshortest (від найкоротшої до найдовшої)')
+                print('\nДоступні команди сортування: \n> earliest (від найранішої до найпізнішої) \n> latest (від найпізнішої до найранішої) \n> longest (від найдовшої до найкоротшої) \n> shortest (від найкоротшої до найдовшої)')
                 order = input('\nЗа яким критерієм сортувати нотатки? ').lower()
                 if order in ['earliest', 'latest', 'longest', 'shortest']:
-                    sort_notes(order)
+                    num_notes = int(input('Скільки нотаток ви бажаєте побачити? '))
+                    sort_notes(order, num_notes)
                 else:
                     print('Невірний критерій сортування. Спробуйте ще раз.')
 
@@ -74,8 +78,7 @@ def user_input():
         else:
             print('Невідома команда. Спробуйте ще раз.')
 
+
 if __name__ == '__main__':
     print('Вас вітає програма для створення та сортування нотаток.')
-    print('\nДоступні команди: \n\nadd (створити нотатку)\nsort (сортувати нотатки) \nexit (вийти з програми)')
-    print('')
     user_input()
