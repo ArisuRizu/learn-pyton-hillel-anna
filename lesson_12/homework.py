@@ -50,11 +50,11 @@ def read_tech_inventory(filename):
 def print_statistics(category_index, brand_index):
 
 
-    print('\nРозподіл товару за категоріями:')
+    print('\nТовари за категоріями в наявності:')
     for category, items in category_index.items():
         print(f"> Категорія '{category}': {len(items)} товарів")
 
-    print('\nСтатистика за брендами:')
+    print('\nТовари за брендами в наявності:')
     for brand, items in brand_index.items():
         print(f"> Бренд '{brand}': {len(items)} товарів")
 
@@ -66,15 +66,17 @@ def print_items_by_brand_and_category(id_index, brand_index, category_index, sel
     items = set(brand_index.get(selected_brand, [])) & set(category_index.get(selected_category, []))
 
     if items:
-        print(f"Товари бренду '{selected_brand}' у категорії '{selected_category}':")
+        print(f"\nТовари бренду '{selected_brand}' у категорії '{selected_category}':")
         for item_id in items:
             item = id_index[item_id]
             print(f"ID: {item_id}, Модель: {item['model']}, Ціна: {item['price']}")
     else:
-        print(f"Немає товарів бренду '{selected_brand}' у категорії '{selected_category}'.")
+        print(f"\nНемає товарів бренду '{selected_brand}' у категорії '{selected_category}'.")
 
 # Здійснюємо зчитування файлу, виведення статистики.
 if __name__ == '__main__':
+    print("\nВас вітає программа з товарами інтернет-магазину техніки.")
+    print("Для успішного використання введіть бренд товару та категорію зі списку нижче!")
 
     current_dir = os.path.dirname(__file__)
     filename = os.path.join(current_dir, 'tech_inventory.csv')
@@ -83,8 +85,10 @@ if __name__ == '__main__':
 
     print_statistics(category_index, brand_index)
 
-    # Виводимо товари за обраним брендом та категорією.
-    selected_brand = 'Apple'
-    selected_category = 'Smartphones'
+    # Ввод товару від користувача.
+    selected_brand = input("\nВведіть бренд товару, який ви шукаєте:\n> ")
+    selected_category = input("\nВведіть категорію товару, яку ви шукаєте:\n> ")
+
     print_items_by_brand_and_category(id_index, brand_index, category_index, selected_brand, selected_category)
 
+    print("Дякуємо, що завітали. До нових зустрічей!")
