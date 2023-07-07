@@ -9,16 +9,18 @@ if __name__ == '__main__':
         Cat("'Бабай'", 1)
     ]
 
-    animals_in_need_of_veterinarian = []  # Список тварин, які потребують догляду у ветеринара.
+    # Ззаначаємо список тварин, які потребують догляду у ветеринара.
+    animals_in_need_of_veterinarian = []
 
     available_food = ['сухий корм', 'вологий корм', 'недоїдки', 'павук', 'сіно', 'траву', "зерно", "пшоно", "кашу", "м'ясо", "кістки", "тортик"]
 
+    # Список результатів, що витрачено на фермі і, що отримали від тварин.
     what_we_got = []
-    what_we_lost = []
+    what_we_lost = []  #
     for animal in animals:
         animal.say()
 
-        # Перевірка, чи потрібно тварині до ветеринара
+        # Перевірка, з рандомною генерацією чи потрібно тварині до ветеринара
         if not animal.visited_veterinarian:
             animals_in_need_of_veterinarian.append(animal)
             animal.visited_veterinarian = choices([True, False], weights=[0.5, 0.5])[0]
@@ -26,11 +28,13 @@ if __name__ == '__main__':
         eaten_food = choices(available_food, k=3)
         for food in eaten_food:
             what_we_lost.append(food)
+            # Годуємо тварину
             animal.eat(food)
 
         if animal.hungry:
             print(f'{animal} голодний! Швиденько нагодуйте його.')
 
+        # Догляд за твариною і  результат цього догляду.
         what_we_got.append(animal.treat(randint(0, 5)))
         print('=' * 30)
 
@@ -44,7 +48,7 @@ if __name__ == '__main__':
         print(f'Від тварин сьогодні не отримали нічого.')
 
     print('=' * 30)
-    # Виведення тварин, які потребують догляду
+    # Виводимо тварин, які потребують догляду
     if len(animals_in_need_of_veterinarian) > 0:
         print("Необхідність відвідування ветеринара:")
         for animal in animals_in_need_of_veterinarian:
