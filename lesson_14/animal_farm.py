@@ -3,12 +3,13 @@ from random import choices, randint
 
 if __name__ == '__main__':
     animals = [
-        Dog('Бобик', 3),
-        Hen('Коко', 2),
-        Cow('Пельмень', 5),
-        Cat('Бабай', 1)
+        Dog("'Бобик'", 3),
+        Hen("'Коко'", 2),
+        Cow("'Пельмень'", 5),
+        Cat("'Бабай'", 1)
     ]
-    animals_in_need_of_veterinarian = []  # Список тварин, які потребують догляду
+
+    animals_in_need_of_veterinarian = []  # Список тварин, які потребують догляду у ветеринара.
 
     available_food = ['сухий корм', 'вологий корм', 'недоїдки', 'павук', 'сіно', 'траву', "зерно", "пшоно", "кашу", "м'ясо", "кістки", "тортик"]
 
@@ -45,7 +46,7 @@ if __name__ == '__main__':
     print('=' * 30)
     # Виведення тварин, які потребують догляду
     if len(animals_in_need_of_veterinarian) > 0:
-        print("Тварини, які потребують огляду ветеринара:")
+        print("Необхідність відвідування ветеринара:")
         for animal in animals_in_need_of_veterinarian:
             if animal.visited_veterinarian:
                 print(f"{animal} був у ветеринара")

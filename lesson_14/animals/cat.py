@@ -25,9 +25,14 @@ class Cat(Animal):
         :param hours: час догляду за собою,
         :return: отримуємо знищений диван або нічого.
         """
+        while hours <= 0:
+            hours += 1
+
         if hours > 2:
             print(f'{self} дряпає диван {hours} годин і Ви отримуєте зіпсований диван.')
             return 'зіпсований диван'
+
         print(f'{self} з\'їв павука та дрімає {hours} годин.')
         return ''
+
 

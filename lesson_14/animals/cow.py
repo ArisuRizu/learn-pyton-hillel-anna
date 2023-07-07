@@ -20,6 +20,9 @@ class Cow(Animal):
         :param hours: час догляду за твариною,
         :return: отримуємо молоко або нічого.
         """
+        while hours <= 0:
+            hours += 1
+
         if hours > 1:
             print(f'Ви доглядаєте за {self} {hours} годин та отримуєте відро молока')
             return 'відро молока'

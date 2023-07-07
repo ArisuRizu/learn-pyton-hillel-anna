@@ -25,6 +25,9 @@ class Dog(Animal):
         :param hours: кількість годин догляду,
         :return: отримуємо нічого або гарний настрій.
         """
+        while hours <= 0:
+            hours += 1
+
         if hours > 2:
             print(f'Ви граєтесь з {self} {hours} годин і у Вас покращується настрій.')
             return 'чудовий настрій'

@@ -24,6 +24,9 @@ class Hen(Animal):
         :param hours: кількість годин догляду,
         :return: отримуємо від 1 до 10 яєць.
         """
+        while hours <= 0:
+            hours += 1
+
         if hours > 2:
             print(f'Ви доглядаєте за {self} {hours} годин і отримуєте десяток курячих яєць.')
             return 'курячі яйця: 10 шт.'
