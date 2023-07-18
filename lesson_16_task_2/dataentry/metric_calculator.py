@@ -1,7 +1,12 @@
+# Імпортуємо модулі.
 from datetime import date
 from datetime import datetime
 
 class MetricCalculator:
+    """
+    Клас MetricCalculator.
+    Ініціалізує атрибути об'єкту, які використовуються для обробки даних і розрахунків метрик.
+    """
     def __init__(self):
         self.data = []
         self.sku_index = {}
@@ -9,6 +14,10 @@ class MetricCalculator:
         self.operation_index = {}
 
     def create_index(self, column):
+        """
+        Створення індексу за певним стовпцем у наборі даних.
+        :param column: Назва стовпчика.
+        """
         if column == 'sku':
             self.sku_index = {}
             for entry in self.data:
@@ -32,6 +41,10 @@ class MetricCalculator:
                 self.operation_index[operation].append(entry)
 
     def calculate_profit_from_sales(self):
+        """
+        Розрахунок загального прибутку від продажів.
+        :return: Загальний прибуток
+        """
         total_profit = 0
         for entry in self.data:
             if entry.operation == 'sale':
@@ -43,6 +56,10 @@ class MetricCalculator:
         return total_profit
 
     def calculate_lost_skus(self):
+        """
+        Розрахунок кількості унікальних втрачених SKU.
+        :return: Кількість унікальних втрачених SKU
+        """
         lost_skus = set()
         today = date.today()
         for entry in self.data:
@@ -52,6 +69,10 @@ class MetricCalculator:
         return len(lost_skus)
 
     def calculate_items_per_warehouse(self):
+        """
+        Розрахунок кількості товарів за складом.
+        :return: Словник, де ключі - склади, значення - кількість товарів на кожному складі
+        """
         items_per_warehouse = {}
         for entry in self.data:
             warehouse = entry.warehouse
@@ -61,6 +82,10 @@ class MetricCalculator:
         return items_per_warehouse
 
     def calculate_sold_items_per_warehouse(self):
+        """
+        Розрахунок кількості проданих товарів за складом.
+        :return: Словник, де ключі - склади, значення - кількість проданих товарів на кожному складі
+        """
         sold_items_per_warehouse = {}
         for entry in self.data:
             if entry.operation == 'sale':
@@ -71,6 +96,10 @@ class MetricCalculator:
         return sold_items_per_warehouse
 
     def calculate_disposed_items_per_warehouse(self):
+        """
+        Розрахунок кількості списаних товарів за складом.
+        :return: Словник, де ключі - склади, значення - кількість списаних товарів на кожному складі
+        """
         disposed_items_per_warehouse = {}
         for entry in self.data:
             if entry.operation == 'dispose':
