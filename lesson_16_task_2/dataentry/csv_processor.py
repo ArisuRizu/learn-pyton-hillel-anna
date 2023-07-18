@@ -1,3 +1,4 @@
+# Імпортуємо модулі.
 import os
 from .file_processor import FileProcessor
 import csv
@@ -5,6 +6,9 @@ from .data_entry import DataEntry
 
 class CSVProcessor(FileProcessor):
     def process_directory(self, directory):
+        """
+        Обробка всіх CSV файлів у директорії.
+        """
         for filename in os.listdir(directory):
             if filename.endswith('.csv'):
                 file_path = os.path.join(directory, filename)
@@ -12,6 +16,9 @@ class CSVProcessor(FileProcessor):
                 self.processed_filenames.append(filename)
 
     def process_csv_file(self, file_path):
+        """
+        Обробка окремого CSV файла.
+        """
         with open(file_path, 'r') as f:
             csv_reader = csv.DictReader(f)
             for record in csv_reader:
